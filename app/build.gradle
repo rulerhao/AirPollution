@@ -44,6 +44,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+
     // Gson
     implementation "com.google.code.gson:gson:$gson_version"
 
@@ -57,4 +59,22 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
     kapt 'androidx.hilt:hilt-compiler:1.0.0'
+
+    // Test
+    // For instrumented tests.// Core library
+    androidTestImplementation 'androidx.test:core:1.5.0'
+    androidTestImplementation ('com.google.dagger:hilt-android-testing:2.44.2')
+    androidTestImplementation ('androidx.test.ext:junit:1.1.4')
+    androidTestImplementation ('androidx.test:runner:1.5.1')
+    androidTestImplementation ('androidx.test:rules:1.5.0')
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.44.2")
+
+    testImplementation 'androidx.test:core:1.5.0'
+    testImplementation('com.google.dagger:hilt-android-testing:2.44.2')
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation ('androidx.test:runner:1.5.1')
+    testImplementation ('androidx.test:rules:1.5.0')
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
+    kaptTest("com.google.dagger:hilt-android-compiler:2.44.2")
 }
