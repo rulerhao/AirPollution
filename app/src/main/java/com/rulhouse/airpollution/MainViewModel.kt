@@ -101,7 +101,7 @@ class MainViewModel @Inject constructor(
             _searchStatus.value = SearchStatus.NonInput
         }
 
-        searchRecords(records.value, searchText)
+        searchRecords(searchText)
     }
 
     private fun getCardRecordsByPM2p5(records: List<Record>?) {
@@ -115,9 +115,9 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun searchRecords(records: List<Record>?, searchText: String) {
+    private fun searchRecords(searchText: String) {
         val newRecords = mutableListOf<Record>()
-        records?.forEach {
+        records.value?.forEach {
             if (it.sitename.contains(searchText)) newRecords.add(it)
         }
         getCardRecordsByPM2p5(newRecords)
