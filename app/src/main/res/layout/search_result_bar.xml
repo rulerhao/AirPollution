@@ -23,13 +23,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <EditText
         android:id="@+id/searchTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="基隆"
+        android:autofillHints="請輸入「站名」"
         android:gravity="bottom|start"
-        android:textSize="28sp"
+        android:inputType="text"
+        android:text="基隆"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/backArrow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/backArrow"
