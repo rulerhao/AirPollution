@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".scene.main.MainActivity">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.rulhouse.airpollution.view.Status" />
+        <variable
+            name="record"
+            type="com.rulhouse.airpollution.model.remote.air_pollution.dto.Record" />
+        <variable
+            name="viewModel"
+            type="com.rulhouse.airpollution.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            layout="@layout/middle_vertical_card_site"
+            bind:record="@{record}" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/centerGuideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <include
+            layout="@layout/middle_vertical_card_content_good_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="@{record.status.equals(`良好`) ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/centerGuideLine"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:record="@{record}" />
+
+        <include
+            layout="@layout/middle_vertical_card_content_no_good_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{!record.status.equals(`良好`) ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:record="@{record}"
+            bind:viewModel="@{viewModel}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
