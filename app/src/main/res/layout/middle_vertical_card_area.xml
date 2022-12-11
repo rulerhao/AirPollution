@@ -27,7 +27,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:setAdapter="@{middleCardAdapter}"
-            app:submitList="@{viewModel.records}"
+            app:submitList="@{viewModel.middleCardRecords}"
             tools:listitem="@layout/middle_vertical_card" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

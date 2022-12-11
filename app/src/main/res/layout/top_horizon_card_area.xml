@@ -27,7 +27,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:setAdapter="@{topHorizonCardAdapter}"
-            app:submitList="@{viewModel.records}"
+            app:submitList="@{viewModel.topCardRecords}"
             tools:listitem="@layout/top_horizon_card" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

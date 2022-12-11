@@ -28,6 +28,12 @@ class MainViewModel @Inject constructor(
     private val _records = MutableLiveData<List<Record>>()
     val records: LiveData<List<Record>> = _records
 
+    private val _topCardRecords = MutableLiveData<List<Record>>()
+    val topCardRecords: LiveData<List<Record>> = _topCardRecords
+
+    private val _middleCardRecords = MutableLiveData<List<Record>>()
+    val middleCardRecords: LiveData<List<Record>> = _middleCardRecords
+
     private val _searchText = MutableLiveData<String>("Apple")
     val searchText: LiveData<String> = _searchText
 
@@ -59,6 +65,7 @@ class MainViewModel @Inject constructor(
                     is BaseResult.Success -> {
                         Log.d(tag, "Success!")
                         _records.value = baseResult.data
+                        getCardRecords(records.value)
                     }
                     is BaseResult.Error -> {
                         val code = baseResult.rawResponse
@@ -92,6 +99,17 @@ class MainViewModel @Inject constructor(
             _searchStatus.value = SearchStatus.Input
         } else {
             _searchStatus.value = SearchStatus.NonInput
+        }
+    }
+
+    private fun getCardRecords(records: List<Record>?) {
+        if (records != null) {
+            _topCardRecords.value = records.filter {
+                it.pm2_5.toInt() <= 30
+            }
+            _middleCardRecords.value = records.filter {
+                it.pm2_5.toInt() > 30
+            }
         }
     }
 
