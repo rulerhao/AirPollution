@@ -100,6 +100,8 @@ class MainViewModel @Inject constructor(
         } else {
             _searchStatus.value = SearchStatus.NonInput
         }
+
+        searchRecords(records.value, searchText)
     }
 
     private fun getCardRecords(records: List<Record>?) {
@@ -111,6 +113,14 @@ class MainViewModel @Inject constructor(
                 it.pm2_5.toInt() > 30
             }
         }
+    }
+
+    private fun searchRecords(records: List<Record>?, searchText: String) {
+        val newRecords = mutableListOf<Record>()
+        records?.forEach {
+            if (it.sitename.contains(searchText)) newRecords.add(it)
+        }
+        getCardRecords(newRecords)
     }
 
     override fun onDetailClicked(record: Record) {
