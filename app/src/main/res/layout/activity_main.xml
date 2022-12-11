@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    tools:context=".scene.main.MainActivity">
 
     <data>
         <variable
             name="viewModel"
             type="com.rulhouse.airpollution.MainViewModel" />
+        <variable
+            name="topHorizonCardAdapter"
+            type="com.rulhouse.airpollution.view.TopHorizonCardAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".scene.main.MainActivity">
+        android:layout_height="match_parent">
 
-        <include layout="@layout/search_bar"
-            bind:viewModel="@{viewModel}"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/search_bar"
+                bind:viewModel="@{viewModel}" />
+            <include
+                layout="@layout/top_horizon_card_area"
+                bind:viewModel="@{viewModel}"
+                bind:topHorizonCardAdapter="@{topHorizonCardAdapter}" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
