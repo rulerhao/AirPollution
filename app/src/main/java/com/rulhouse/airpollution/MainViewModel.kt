@@ -123,7 +123,7 @@ class MainViewModel @Inject constructor(
         records.value?.forEach {
             if (it.sitename.contains(searchText)) newRecords.add(it)
         }
-        getCardRecordsByPM2p5(newRecords)
+        _middleCardRecords.value = newRecords
     }
 
     override fun onDetailClicked(record: Record) {
