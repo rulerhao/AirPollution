@@ -3,6 +3,7 @@
     xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
         <import type="com.rulhouse.airpollution.view.SearchStatus"/>
         <variable
             name="viewModel"
@@ -15,12 +16,12 @@
 
         <include
             layout="@layout/original_search_bar"
-            android:visibility="@{viewModel.originalSearchBarVisibility}"
+            android:visibility="@{viewModel.searchStatus == SearchStatus.NonSearch ? View.VISIBLE : View.GONE}"
             bind:viewModel="@{viewModel}" />
 
         <include
             layout="@layout/result_search_bar"
-            android:visibility="@{viewModel.resultSearchBarVisibility}"
+            android:visibility="@{viewModel.searchStatus == SearchStatus.NonSearch ? View.GONE : View.VISIBLE}"
             bind:viewModel="@{viewModel}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

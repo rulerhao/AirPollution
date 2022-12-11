@@ -1,7 +1,6 @@
 package com.rulhouse.airpollution
 
 import android.util.Log
-import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -34,12 +33,6 @@ class MainViewModel @Inject constructor(
     private val _searchStatus = MutableLiveData(SearchStatus.NonSearch)
     val searchStatus: LiveData<SearchStatus> = _searchStatus
 
-    private val _originalSearchBarVisibility = MutableLiveData(View.VISIBLE)
-    val originalSearchBarVisibility: LiveData<Int> = _originalSearchBarVisibility
-
-    private val _resultSearchBarVisibility = MutableLiveData(View.GONE)
-    val resultSearchBarVisibility: LiveData<Int> = _resultSearchBarVisibility
-
     private var getRecordssJob: Job? = null
 
     init {
@@ -65,7 +58,6 @@ class MainViewModel @Inject constructor(
                     is BaseResult.Success -> {
                         Log.d(tag, "Success!")
                         _records.value = baseResult.data
-                        _searchText.postValue("Nice")
                     }
                     is BaseResult.Error -> {
                         val code = baseResult.rawResponse
@@ -83,14 +75,10 @@ class MainViewModel @Inject constructor(
 
     fun openSearchBar() {
         _searchStatus.value = SearchStatus.NonInput
-        _originalSearchBarVisibility.value = View.GONE
-        _resultSearchBarVisibility.value = View.VISIBLE
     }
 
     fun closeSearchBar() {
         _searchStatus.value = SearchStatus.NonSearch
-        _originalSearchBarVisibility.value = View.VISIBLE
-        _resultSearchBarVisibility.value = View.GONE
     }
 
     fun onSearchTextChanged(text: CharSequence) {
