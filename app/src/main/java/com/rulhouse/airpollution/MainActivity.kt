@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.rulhouse.airpollution.databinding.ActivityMainBinding
+import com.rulhouse.airpollution.model.remote.air_pollution.dto.Record
 import com.rulhouse.airpollution.view.MiddleCardAdapter
 import com.rulhouse.airpollution.view.TopHorizonCardAdapter
 import dagger.hilt.android.AndroidEntryPoint

@@ -11,6 +11,7 @@ import com.rulhouse.airpollution.model.remote.response.BaseResult
 import com.rulhouse.airpollution.model.remote.response.RetrofitException
 import com.rulhouse.airpollution.view.MiddleCardListener
 import com.rulhouse.airpollution.view.SearchStatus
+import com.rulhouse.airpollution.view.toast.ToastImpl
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
@@ -20,7 +21,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
-    private val airPollutionApiUseCases: AirPollutionApiUseCases
+    private val airPollutionApiUseCases: AirPollutionApiUseCases,
+    private val provideToastImpl: ToastImpl
 ) : ViewModel(), MiddleCardListener {
 
     private val tag = this::class.simpleName
@@ -90,8 +92,8 @@ class MainViewModel @Inject constructor(
         getCardRecordsByPM2p5(records.value)
     }
 
-    fun showDetail() {
-        Log.d(tag, "TestShowDetail")
+    private fun showDetail(record: Record) {
+        provideToastImpl.toast("Site Name: ${record.sitename}, Site Id: ${record.siteid}, PM2.5: ${record.pm2_5}")
     }
 
     fun onSearchTextChanged(text: CharSequence) {
@@ -126,6 +128,6 @@ class MainViewModel @Inject constructor(
     }
 
     override fun onDetailClicked(record: Record) {
-        showDetail()
+        showDetail(record)
     }
 }
