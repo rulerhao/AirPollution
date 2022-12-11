@@ -87,8 +87,7 @@ class MainViewModel @Inject constructor(
 
     fun closeSearchBar() {
         _searchStatus.value = SearchStatus.NonSearch
-        _searchText.value = ""
-        searchRecords(searchText.value!!)
+        getCardRecordsByPM2p5(records.value)
     }
 
     fun showDetail() {
