@@ -94,14 +94,15 @@ class MainViewModel @Inject constructor(
     }
 
     fun onSearchTextChanged(text: CharSequence) {
-        val searchText = text.toString()
-        if (searchText.isNotBlank()) {
-            _searchStatus.value = SearchStatus.Input
-        } else {
-            _searchStatus.value = SearchStatus.NonInput
+        _searchText.value = text.toString()
+        if (searchText.value != null) {
+            if (searchText.value?.isNotBlank() == true) {
+                _searchStatus.value = SearchStatus.Input
+            } else {
+                _searchStatus.value = SearchStatus.NonInput
+            }
+            searchRecords(searchText.value!!)
         }
-
-        searchRecords(searchText)
     }
 
     private fun getCardRecordsByPM2p5(records: List<Record>?) {
