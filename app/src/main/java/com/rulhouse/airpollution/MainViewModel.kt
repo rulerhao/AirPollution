@@ -65,7 +65,7 @@ class MainViewModel @Inject constructor(
                     is BaseResult.Success -> {
                         Log.d(tag, "Success!")
                         _records.value = baseResult.data
-                        getCardRecords(records.value)
+                        getCardRecordsByPM2p5(records.value)
                     }
                     is BaseResult.Error -> {
                         val code = baseResult.rawResponse
@@ -104,7 +104,7 @@ class MainViewModel @Inject constructor(
         searchRecords(records.value, searchText)
     }
 
-    private fun getCardRecords(records: List<Record>?) {
+    private fun getCardRecordsByPM2p5(records: List<Record>?) {
         if (records != null) {
             _topCardRecords.value = records.filter {
                 it.pm2_5.toInt() <= 30
@@ -120,7 +120,7 @@ class MainViewModel @Inject constructor(
         records?.forEach {
             if (it.sitename.contains(searchText)) newRecords.add(it)
         }
-        getCardRecords(newRecords)
+        getCardRecordsByPM2p5(newRecords)
     }
 
     override fun onDetailClicked(record: Record) {
