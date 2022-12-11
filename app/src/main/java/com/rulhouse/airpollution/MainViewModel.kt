@@ -9,6 +9,7 @@ import com.rulhouse.airpollution.model.remote.air_pollution.dto.Record
 import com.rulhouse.airpollution.model.remote.air_pollution.use_cases.AirPollutionApiUseCases
 import com.rulhouse.airpollution.model.remote.response.BaseResult
 import com.rulhouse.airpollution.model.remote.response.RetrofitException
+import com.rulhouse.airpollution.view.MiddleCardListener
 import com.rulhouse.airpollution.view.SearchStatus
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.catch
@@ -20,7 +21,7 @@ import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
     private val airPollutionApiUseCases: AirPollutionApiUseCases
-) : ViewModel() {
+) : ViewModel(), MiddleCardListener {
 
     private val tag = this::class.simpleName
 
@@ -81,6 +82,10 @@ class MainViewModel @Inject constructor(
         _searchStatus.value = SearchStatus.NonSearch
     }
 
+    fun showDetail() {
+        Log.d(tag, "TestShowDetail")
+    }
+
     fun onSearchTextChanged(text: CharSequence) {
         val searchText = text.toString()
         if (searchText.isNotBlank()) {
@@ -88,5 +93,9 @@ class MainViewModel @Inject constructor(
         } else {
             _searchStatus.value = SearchStatus.NonInput
         }
+    }
+
+    override fun onDetailClicked(record: Record) {
+        showDetail()
     }
 }

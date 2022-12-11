@@ -8,27 +8,27 @@
             name="viewModel"
             type="com.rulhouse.airpollution.MainViewModel" />
         <variable
-            name="topHorizonCardAdapter"
-            type="com.rulhouse.airpollution.view.TopHorizonCardAdapter" />
+            name="middleCardAdapter"
+            type="com.rulhouse.airpollution.view.MiddleCardAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/topHorizonCards"
+            android:id="@+id/middleCards"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:setAdapter="@{topHorizonCardAdapter}"
+            app:setAdapter="@{middleCardAdapter}"
             app:submitList="@{viewModel.records}"
-            tools:listitem="@layout/top_horizon_card" />
+            tools:listitem="@layout/middle_vertical_card" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

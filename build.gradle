@@ -6,6 +6,7 @@ buildscript {
         hilt_version = '2.44.2'
         retrofit_version = '2.9.0'
         httplogging_version = '5.0.0-alpha.10'
+        lifecycle_version = '2.5.1'
     }
     repositories {
         google()

@@ -1,6 +1,7 @@
 package com.rulhouse.airpollution.model.remote.air_pollution.dto
 
 import com.google.gson.annotations.SerializedName
+import com.rulhouse.airpollution.base.ListAdapterItem
 
 data class Record(
     @SerializedName("aqi")
@@ -50,5 +51,6 @@ data class Record(
     @SerializedName("wind_direc")
     val wind_direc: String,
     @SerializedName("wind_speed")
-    val wind_speed: String
-)
+    val wind_speed: String,
+    override val id: Long
+): ListAdapterItem

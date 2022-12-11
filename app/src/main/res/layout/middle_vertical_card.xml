@@ -7,13 +7,12 @@
 
     <data>
         <import type="android.view.View"/>
-        <import type="com.rulhouse.airpollution.view.Status" />
         <variable
             name="record"
             type="com.rulhouse.airpollution.model.remote.air_pollution.dto.Record" />
         <variable
-            name="viewModel"
-            type="com.rulhouse.airpollution.MainViewModel" />
+            name="listener"
+            type="com.rulhouse.airpollution.view.MiddleCardListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,7 +50,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             bind:record="@{record}"
-            bind:viewModel="@{viewModel}" />
+            bind:listener="@{listener}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

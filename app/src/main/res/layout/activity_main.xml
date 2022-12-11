@@ -11,6 +11,9 @@
         <variable
             name="topHorizonCardAdapter"
             type="com.rulhouse.airpollution.view.TopHorizonCardAdapter" />
+        <variable
+            name="middleCardAdapter"
+            type="com.rulhouse.airpollution.view.MiddleCardAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,6 +32,10 @@
                 layout="@layout/top_horizon_card_area"
                 bind:viewModel="@{viewModel}"
                 bind:topHorizonCardAdapter="@{topHorizonCardAdapter}" />
+            <include
+                layout="@layout/middle_vertical_card_area"
+                bind:viewModel="@{viewModel}"
+                bind:middleCardAdapter="@{middleCardAdapter}" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
